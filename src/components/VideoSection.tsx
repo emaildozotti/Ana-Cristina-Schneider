@@ -1,10 +1,10 @@
 // DECISÃO CRIATIVA: Fundo bg-warm para respiro após PainPoints dark.
 // Container 9:16 vertical maxWidth 300px para YouTube Shorts embed.
-// Texto pré/pós-vídeo em 1ª pessoa.
+// Placeholder elegante enquanto o cliente não envia o vídeo.
 
 import { FadeIn } from '../App'
 
-const VIDEO_ID = 'CKj8c_xb5FQ'
+const VIDEO_ID = '' // Aguardando vídeo do cliente — placeholder ativo
 
 export default function VideoSection() {
   return (
@@ -39,12 +39,13 @@ export default function VideoSection() {
           {/* Container de vídeo 9:16 */}
           <FadeIn delay={0.2}>
             <div
-              className="relative mx-auto overflow-hidden rounded-sm"
+              className="relative mx-auto overflow-hidden"
               style={{
                 maxWidth: '300px',
                 width: '100%',
                 aspectRatio: '9/16',
-                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
+                boxShadow: '0 25px 60px -12px rgba(26,46,61,0.25)',
+                borderRadius: '2px',
               }}
             >
               {VIDEO_ID ? (
@@ -57,21 +58,43 @@ export default function VideoSection() {
                 />
               ) : (
                 <div
-                  className="absolute inset-0 flex items-center justify-center"
+                  className="absolute inset-0 flex flex-col items-center justify-center gap-8"
                   style={{ backgroundColor: 'var(--color-primary)' }}
                 >
+                  {/* Linha accent esquerda */}
+                  <div
+                    className="absolute left-0 top-12 bottom-12 w-[3px]"
+                    style={{ backgroundColor: 'var(--color-accent)', opacity: 0.5 }}
+                  />
+
                   <div className="text-center px-8">
+                    {/* Ícone play */}
                     <div
-                      className="w-16 h-16 rounded-full border-2 flex items-center justify-center mx-auto mb-6"
-                      style={{ borderColor: 'rgba(184, 150, 110, 0.4)' }}
+                      className="w-16 h-16 flex items-center justify-center mx-auto mb-8"
+                      style={{
+                        border: '1px solid rgba(184, 150, 110, 0.35)',
+                        borderRadius: '2px',
+                      }}
                     >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M8 5v14l11-7L8 5z" fill="var(--color-accent)" />
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <path d="M8 5v14l11-7L8 5z" fill="var(--color-accent)" opacity="0.8" />
                       </svg>
                     </div>
+
                     <p
-                      className="text-xs uppercase tracking-[0.2em] font-light"
-                      style={{ color: 'var(--color-off-white)', opacity: 0.6 }}
+                      className="font-display italic leading-snug mb-4"
+                      style={{
+                        fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
+                        color: 'var(--color-off-white)',
+                        opacity: 0.9,
+                      }}
+                    >
+                      Ana Cristina Schneider
+                    </p>
+
+                    <p
+                      className="text-[10px] uppercase tracking-[0.25em] font-light"
+                      style={{ color: 'var(--color-accent)', opacity: 0.7 }}
                     >
                       Vídeo em breve
                     </p>

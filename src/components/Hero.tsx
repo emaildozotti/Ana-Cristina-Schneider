@@ -82,19 +82,21 @@ export default function Hero() {
           {/* H1 */}
           <FadeIn delay={0.15}>
             <h1
-              className="font-display leading-[1.1] max-w-2xl tracking-tight"
+              className="font-display leading-[1.1]"
               style={{
-                fontSize: 'clamp(2.8rem, 6vw, 4.8rem)',
+                fontSize: 'clamp(2.5rem, 5.5vw, 4.5rem)',
                 color: 'var(--color-off-white)',
+                letterSpacing: '-0.01em',
+                maxWidth: '600px',
               }}
             >
               Funcional por fora.{' '}
-              <span
-                className="italic font-light block mt-2"
-                style={{ color: 'var(--color-accent)' }}
+              <em
+                className="italic font-light"
+                style={{ color: 'var(--color-accent)', display: 'block', marginTop: '0.35em' }}
               >
                 Desaparecida por dentro.
-              </span>
+              </em>
             </h1>
           </FadeIn>
 
@@ -127,7 +129,28 @@ export default function Hero() {
               <motion.button
                 onClick={() => scrollToSection('pain')}
                 whileTap={{ scale: 0.98 }}
-                className="btn-shimmer-light"
+                style={{
+                  padding: '1.25rem 2.5rem',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.75rem',
+                  fontWeight: 400,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(232, 236, 240, 0.75)',
+                  backgroundColor: 'transparent',
+                  border: '1px solid rgba(232, 236, 240, 0.2)',
+                  borderRadius: '0px',
+                  cursor: 'pointer',
+                  transition: 'all 0.4s ease',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(184, 150, 110, 0.4)'
+                  ;(e.currentTarget as HTMLButtonElement).style.color = 'rgba(232, 236, 240, 1)'
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(232, 236, 240, 0.2)'
+                  ;(e.currentTarget as HTMLButtonElement).style.color = 'rgba(232, 236, 240, 0.75)'
+                }}
               >
                 Entender o processo
               </motion.button>
