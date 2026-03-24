@@ -5,6 +5,8 @@
 import { motion } from 'motion/react'
 import { FadeIn } from '../App'
 
+const WA_LINK = 'https://wa.me/5541999407836?text=Ol%C3%A1%20Ana%2C%20vim%20pela%20p%C3%A1gina%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o.'
+
 function scrollToSection(id: string) {
   const el = document.getElementById(id)
   if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -110,16 +112,26 @@ export default function Hero() {
             </p>
           </FadeIn>
 
-          {/* CTA */}
+          {/* CTAs */}
           <FadeIn delay={0.45}>
-            <motion.button
-              onClick={() => scrollToSection('pain')}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="btn-shimmer mt-4 lg:mt-8"
-            >
-              Quero reencontrar meu fôlego
-            </motion.button>
+            <div className="flex flex-col sm:flex-row gap-4 mt-4 lg:mt-8">
+              <motion.a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileTap={{ scale: 0.98 }}
+                className="btn-shimmer"
+              >
+                Quero reencontrar meu fôlego
+              </motion.a>
+              <motion.button
+                onClick={() => scrollToSection('pain')}
+                whileTap={{ scale: 0.98 }}
+                className="btn-shimmer-light"
+              >
+                Entender o processo
+              </motion.button>
+            </div>
           </FadeIn>
         </div>
 

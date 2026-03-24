@@ -2,7 +2,7 @@
 // Aspa analítica gigante 120px em Cormorant Garamond opacity 8% como fundo.
 // Border-left 3px accent. NÃO marquee.
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { FadeIn } from '../App'
 
@@ -26,6 +26,7 @@ const testimonials = [
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
@@ -34,6 +35,14 @@ export default function Testimonials() {
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
+
+  useEffect(() => {
+    if (isPaused) return
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [isPaused])
 
   return (
     <section
@@ -69,110 +78,120 @@ export default function Testimonials() {
         </div>
 
         {/* Carrossel */}
-        <FadeIn delay={0.2} className="w-full max-w-4xl mx-auto relative px-4 md:px-16">
-          {/* Aspa analítica gigante */}
-          <span
-            className="absolute -top-10 md:-top-16 left-0 md:left-8 leading-none select-none font-display"
-            style={{
-              fontSize: '120px',
-              color: 'var(--color-accent)',
-              opacity: 0.08,
-            }}
-            aria-hidden="true"
+        <FadeIn delay={0.2} className="w-full max-w-4xl mx-auto">
+          <div
+            className="relative px-4 md:px-16"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
-            &ldquo;
-          </span>
-
-          <div className="relative min-h-[320px] md:min-h-[280px] flex items-center justify-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 flex flex-col justify-center items-center text-center"
-              >
-                {/* Border-left accent no card */}
-                <div
-                  className="w-full pl-6 md:pl-10"
-                  style={{ borderLeft: '3px solid var(--color-accent)' }}
-                >
-                  <p
-                    className="text-lg md:text-2xl leading-relaxed mb-10 font-light text-left"
-                    style={{
-                      fontFamily: 'var(--font-sub)',
-                      color: 'var(--color-off-white)',
-                      opacity: 0.95,
-                    }}
-                  >
-                    {testimonials[currentIndex].text}
-                  </p>
-                </div>
-                <footer className="flex flex-col gap-2 items-center mt-4">
-                  <div
-                    className="w-8 h-px mb-2"
-                    style={{ backgroundColor: 'rgba(184, 150, 110, 0.4)' }}
-                  />
-                  <p
-                    className="text-sm md:text-base uppercase tracking-widest font-medium"
-                    style={{
-                      fontFamily: 'var(--font-sans)',
-                      color: 'var(--color-accent)',
-                    }}
-                  >
-                    {testimonials[currentIndex].name}
-                  </p>
-                  <p
-                    className="text-xs md:text-sm font-light tracking-wide"
-                    style={{
-                      fontFamily: 'var(--font-sans)',
-                      color: 'var(--color-off-white)',
-                      opacity: 0.4,
-                    }}
-                  >
-                    {testimonials[currentIndex].role}
-                  </p>
-                </footer>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Controles */}
-          <div className="flex items-center justify-center gap-8 mt-16 md:mt-24 relative z-20">
-            <button
-              onClick={prevTestimonial}
-              className="w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-300 hover:scale-105"
-              style={{ borderColor: 'rgba(184, 150, 110, 0.3)', color: 'var(--color-accent)' }}
-              aria-label="Depoimento Anterior"
+            {/* Aspa analítica gigante */}
+            <span
+              className="absolute -top-10 md:-top-16 left-0 md:left-8 leading-none select-none font-display"
+              style={{
+                fontSize: '120px',
+                color: 'var(--color-accent)',
+                opacity: 0.08,
+              }}
+              aria-hidden="true"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
+              &ldquo;
+            </span>
 
-            <div className="flex gap-3">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-500 ${i === currentIndex ? 'scale-125' : 'opacity-30'}`}
-                  style={{ backgroundColor: 'var(--color-accent)' }}
-                  aria-label={`Ir para depoimento ${i + 1}`}
-                />
-              ))}
+            <div className="relative min-h-[320px] md:min-h-[280px] flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 flex flex-col justify-center items-center text-center"
+                >
+                  {/* Border-left accent no card */}
+                  <div
+                    className="w-full pl-6 md:pl-10"
+                    style={{ borderLeft: '3px solid var(--color-accent)' }}
+                  >
+                    <p
+                      className="text-lg md:text-2xl leading-relaxed mb-10 font-light text-left"
+                      style={{
+                        fontFamily: 'var(--font-sub)',
+                        color: 'var(--color-off-white)',
+                        opacity: 0.95,
+                      }}
+                    >
+                      {testimonials[currentIndex].text}
+                    </p>
+                  </div>
+                  <footer className="flex flex-col gap-2 items-center mt-4">
+                    <div
+                      className="w-8 h-px mb-2"
+                      style={{ backgroundColor: 'rgba(184, 150, 110, 0.4)' }}
+                    />
+                    <p
+                      className="text-sm md:text-base uppercase tracking-widest font-medium"
+                      style={{
+                        fontFamily: 'var(--font-sans)',
+                        color: 'var(--color-accent)',
+                      }}
+                    >
+                      {testimonials[currentIndex].name}
+                    </p>
+                    <p
+                      className="text-xs md:text-sm font-light tracking-wide"
+                      style={{
+                        fontFamily: 'var(--font-sans)',
+                        color: 'var(--color-off-white)',
+                        opacity: 0.4,
+                      }}
+                    >
+                      {testimonials[currentIndex].role}
+                    </p>
+                  </footer>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            <button
-              onClick={nextTestimonial}
-              className="w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-300 hover:scale-105"
-              style={{ borderColor: 'rgba(184, 150, 110, 0.3)', color: 'var(--color-accent)' }}
-              aria-label="Próximo Depoimento"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
+            {/* Indicator bars + controles */}
+            <div className="flex items-center justify-center gap-6 mt-16 md:mt-24 relative z-20">
+              <button
+                onClick={() => { prevTestimonial(); setIsPaused(true) }}
+                className="w-10 h-10 flex items-center justify-center border transition-all duration-300 hover:opacity-100 opacity-60"
+                style={{ borderColor: 'rgba(184, 150, 110, 0.3)', color: 'var(--color-accent)' }}
+                aria-label="Depoimento Anterior"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              {/* Indicator bars */}
+              <div className="flex gap-2">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => { setCurrentIndex(i); setIsPaused(true) }}
+                    className="h-[3px] transition-all duration-500"
+                    style={{
+                      width: i === currentIndex ? '2.5rem' : '1rem',
+                      backgroundColor: i === currentIndex ? 'var(--color-accent)' : 'rgba(184, 150, 110, 0.25)',
+                    }}
+                    aria-label={`Ir para depoimento ${i + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={() => { nextTestimonial(); setIsPaused(true) }}
+                className="w-10 h-10 flex items-center justify-center border transition-all duration-300 hover:opacity-100 opacity-60"
+                style={{ borderColor: 'rgba(184, 150, 110, 0.3)', color: 'var(--color-accent)' }}
+                aria-label="Próximo Depoimento"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
           </div>
         </FadeIn>
 

@@ -24,7 +24,7 @@ interface FadeInProps {
 
 export function FadeIn({ children, delay = 0, className = '', direction = 'up' }: FadeInProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-20px 0px' })
+  const isInView = useInView(ref, { once: true, margin: '-80px 0px' })
 
   const directionOffset = {
     up: { y: 40, x: 0 },
