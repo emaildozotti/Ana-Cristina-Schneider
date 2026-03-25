@@ -1,4 +1,5 @@
-// DECISÃO CRIATIVA: Fundo dark (#1A2E3D). Layout sticky sidebar como pipeline v7.1.0.
+// DECISÃO CRIATIVA: Fundo bg-warm (#F0EDE8) para contraste com Hero dark e VideoSection dark.
+// Layout sticky sidebar como pipeline v7.1.0.
 // Sidebar esquerda fixa com H2 + abertura em 1ª pessoa.
 // Cards direita scrollam verticalmente. Abertura Opção C (1ª pessoa).
 
@@ -31,7 +32,7 @@ export default function PainPoints() {
     <section
       id="pain"
       className="relative overflow-hidden section-padding-lg"
-      style={{ backgroundColor: 'var(--color-dark)' }}
+      style={{ backgroundColor: 'var(--color-bg-warm)' }}
     >
       <div className="relative z-10 container-ultra">
 
@@ -50,7 +51,7 @@ export default function PainPoints() {
             <FadeIn delay={0.1}>
               <p
                 className="eyebrow-ultra mb-8"
-                style={{ color: 'var(--color-accent)', opacity: 0.8 }}
+                style={{ color: 'var(--color-text)', opacity: 0.5 }}
               >
                 Reconhecimento
               </p>
@@ -58,7 +59,7 @@ export default function PainPoints() {
                 className="font-display leading-[1.15]"
                 style={{
                   fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-                  color: 'var(--color-off-white)',
+                  color: 'var(--color-text)',
                   marginBottom: '2rem',
                 }}
               >
@@ -72,8 +73,8 @@ export default function PainPoints() {
                 className="text-base font-light leading-relaxed"
                 style={{
                   fontFamily: 'var(--font-sans)',
-                  color: 'var(--color-off-white)',
-                  opacity: 0.55,
+                  color: 'var(--color-text)',
+                  opacity: 0.6,
                   marginBottom: '2rem',
                 }}
               >
@@ -84,7 +85,7 @@ export default function PainPoints() {
                 style={{
                   width: '2rem',
                   height: '1px',
-                  backgroundColor: 'rgba(184, 150, 110, 0.3)',
+                  backgroundColor: 'rgba(184, 150, 110, 0.4)',
                 }}
               />
             </FadeIn>
@@ -96,8 +97,8 @@ export default function PainPoints() {
               <FadeIn key={pain.num} delay={i * 0.1}>
                 <div
                   style={{
-                    backgroundColor: 'rgba(232, 236, 240, 0.03)',
-                    border: '1px solid rgba(232, 236, 240, 0.08)',
+                    backgroundColor: 'rgba(42, 53, 64, 0.03)',
+                    border: '1px solid rgba(42, 53, 64, 0.1)',
                     borderRadius: '2px',
                     padding: '2rem',
                     position: 'relative',
@@ -106,13 +107,13 @@ export default function PainPoints() {
                   }}
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLDivElement
-                    el.style.borderColor = 'rgba(184, 150, 110, 0.2)'
-                    el.style.backgroundColor = 'rgba(232, 236, 240, 0.05)'
+                    el.style.borderColor = 'rgba(184, 150, 110, 0.3)'
+                    el.style.backgroundColor = 'rgba(42, 53, 64, 0.05)'
                   }}
                   onMouseLeave={e => {
                     const el = e.currentTarget as HTMLDivElement
-                    el.style.borderColor = 'rgba(232, 236, 240, 0.08)'
-                    el.style.backgroundColor = 'rgba(232, 236, 240, 0.03)'
+                    el.style.borderColor = 'rgba(42, 53, 64, 0.1)'
+                    el.style.backgroundColor = 'rgba(42, 53, 64, 0.03)'
                   }}
                 >
                   {/* Número decorativo */}
@@ -124,7 +125,7 @@ export default function PainPoints() {
                       fontFamily: 'var(--font-display)',
                       fontSize: '5rem',
                       color: 'var(--color-accent)',
-                      opacity: 0.06,
+                      opacity: 0.07,
                       lineHeight: 1,
                       userSelect: 'none',
                       pointerEvents: 'none',
@@ -155,7 +156,7 @@ export default function PainPoints() {
                     style={{
                       fontFamily: 'var(--font-sub)',
                       fontSize: 'clamp(0.9375rem, 1.2vw, 1.0625rem)',
-                      color: 'var(--color-off-white)',
+                      color: 'var(--color-text)',
                       opacity: 0.85,
                       lineHeight: 1.75,
                       position: 'relative',
@@ -175,8 +176,8 @@ export default function PainPoints() {
                 style={{
                   fontFamily: 'var(--font-sub)',
                   fontSize: 'clamp(0.875rem, 1.1vw, 1rem)',
-                  color: 'var(--color-off-white)',
-                  opacity: 0.5,
+                  color: 'var(--color-text)',
+                  opacity: 0.55,
                   marginTop: '0.5rem',
                   lineHeight: 1.7,
                 }}

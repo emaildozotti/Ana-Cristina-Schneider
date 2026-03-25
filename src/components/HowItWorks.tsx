@@ -1,8 +1,11 @@
-// DECISÃO CRIATIVA: Fundo bg-light. 3 passos do processo TERAPÊUTICO (não do funil).
-// Desmistificação Lacan + Remove Ansiedade integrados ao final.
-// Numeração decorativa Cormorant Garamond.
+// DECISÃO CRIATIVA: Fundo dark (#1A2E3D) com dot pattern sutil para quebrar a sequência
+// de seções claras. 3 passos em lista border-top, como Miriam v1.
+// Add remove-ansiedade e desmistificação. CTA WA ao final.
 
+import { motion } from 'motion/react'
 import { FadeIn } from '../App'
+
+const WA_LINK = 'https://wa.me/5541999407836?text=Ol%C3%A1%20Ana%2C%20vim%20pela%20p%C3%A1gina%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o.'
 
 const steps = [
   {
@@ -27,16 +30,20 @@ export default function HowItWorks() {
     <section
       id="how"
       className="relative overflow-hidden section-padding-lg"
-      style={{ backgroundColor: 'var(--color-bg-light)' }}
+      style={{
+        backgroundColor: 'var(--color-dark)',
+        backgroundImage: 'radial-gradient(rgba(184, 150, 110, 0.04) 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+      }}
     >
       <div className="container-ultra">
 
         {/* Header */}
-        <div className="max-w-3xl mb-20 md:mb-28">
+        <div className="max-w-3xl mb-16 md:mb-20">
           <FadeIn>
             <p
               className="eyebrow-ultra mb-8"
-              style={{ color: 'var(--color-text)', opacity: 0.5 }}
+              style={{ color: 'var(--color-accent)', opacity: 0.8 }}
             >
               O Percurso
             </p>
@@ -44,45 +51,65 @@ export default function HowItWorks() {
               className="leading-[1.1] font-display"
               style={{
                 fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                color: 'var(--color-text)',
+                color: 'var(--color-off-white)',
                 letterSpacing: '-0.02em',
               }}
             >
-              O percurso{' '}
-              <span className="italic font-light" style={{ color: 'var(--color-accent)' }}>
-                da análise.
-              </span>
+              O que acontece{' '}
+              <em className="italic font-light" style={{ color: 'var(--color-accent)' }}>
+                a partir de agora.
+              </em>
             </h2>
           </FadeIn>
         </div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-20 mb-20 md:mb-28">
+        {/* Steps — border-top list */}
+        <div className="flex flex-col gap-0 mb-16 md:mb-20">
           {steps.map((step, i) => (
-            <FadeIn key={i} delay={i * 0.15}>
-              <div className="relative">
-                {/* Número decorativo */}
-                <span
-                  className="font-display block mb-6 select-none"
-                  style={{
-                    fontSize: '5rem',
-                    lineHeight: 1,
-                    color: 'var(--color-accent)',
-                    opacity: 0.15,
-                  }}
-                  aria-hidden="true"
-                >
-                  {step.num}
-                </span>
-                <h3
-                  className="text-xl md:text-2xl leading-tight font-display mb-6"
-                  style={{ color: 'var(--color-text)' }}
-                >
-                  {step.title}
-                </h3>
+            <FadeIn key={step.num} delay={0.1 * (i + 1)}>
+              <div
+                className="py-8 md:py-10 flex flex-col md:flex-row gap-5 md:gap-10"
+                style={{
+                  borderTop: '1px solid rgba(184, 150, 110, 0.15)',
+                  ...(i === steps.length - 1
+                    ? { borderBottom: '1px solid rgba(184, 150, 110, 0.15)' }
+                    : {}),
+                }}
+              >
+                <div className="flex items-start gap-5 md:w-52 shrink-0">
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '13px',
+                      color: 'var(--color-accent)',
+                      opacity: 0.5,
+                      paddingTop: '2px',
+                      minWidth: '28px',
+                    }}
+                  >
+                    {step.num}
+                  </span>
+                  <h3
+                    className="text-lg md:text-xl"
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      color: 'var(--color-off-white)',
+                      fontWeight: 400,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                </div>
                 <p
-                  className="text-base leading-relaxed font-light"
-                  style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-text)', opacity: 0.7 }}
+                  className="text-sm md:text-base leading-relaxed"
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    color: 'var(--color-off-white)',
+                    fontWeight: 300,
+                    lineHeight: 1.85,
+                    opacity: 0.75,
+                  }}
                 >
                   {step.text}
                 </p>
@@ -92,39 +119,61 @@ export default function HowItWorks() {
         </div>
 
         {/* Desmistificação Lacan */}
-        <FadeIn>
-          <div className="max-w-3xl mx-auto mb-16">
-            <h3
-              className="text-xl md:text-2xl font-display mb-6 text-center"
-              style={{ color: 'var(--color-text)' }}
+        <FadeIn delay={0.2}>
+          <div
+            className="max-w-3xl mb-12"
+            style={{
+              borderLeft: '2px solid rgba(184, 150, 110, 0.3)',
+              padding: '1.5rem 2rem',
+              backgroundColor: 'rgba(184, 150, 110, 0.04)',
+              borderRadius: '0 2px 2px 0',
+            }}
+          >
+            <p
+              className="text-sm md:text-base font-display italic mb-3"
+              style={{ color: 'var(--color-off-white)', opacity: 0.8 }}
             >
               "Psicanálise Lacaniana parece algo complexo e inacessível?"
-            </h3>
+            </p>
             <p
-              className="text-base leading-relaxed font-light text-center"
-              style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-text)', opacity: 0.7 }}
+              className="text-sm md:text-base leading-relaxed font-light"
+              style={{
+                fontFamily: 'var(--font-sans)',
+                color: 'var(--color-off-white)',
+                opacity: 0.6,
+              }}
             >
-              Na prática, é o oposto. O fundamento é simples: em vez de tratar o sintoma com dicas e exercícios genéricos, a Psicanálise escuta o que o sintoma tem a dizer. Cada pessoa é tratada como sujeito singular, não como um diagnóstico de manual. Não uso jargões na sessão. Não exijo que você leia Lacan. O trabalho acontece na conversa: na sua fala, nos seus silêncios, na sua história.
+              Na prática, é o oposto. Em vez de tratar o sintoma com dicas e exercícios genéricos, a Psicanálise escuta o que o sintoma tem a dizer. Não uso jargões na sessão. Não exijo que você leia Lacan. O trabalho acontece na conversa — na sua fala, nos seus silêncios, na sua história.
             </p>
           </div>
         </FadeIn>
 
         {/* Remove Ansiedade */}
-        <FadeIn delay={0.1}>
-          <div
-            className="max-w-2xl mx-auto text-center p-10"
+        <FadeIn delay={0.3}>
+          <p
+            className="text-sm md:text-base font-light italic mb-12 md:mb-16"
             style={{
-              border: '1px solid rgba(42, 53, 64, 0.1)',
-              backgroundColor: 'rgba(184, 150, 110, 0.03)',
+              fontFamily: 'var(--font-sans)',
+              color: 'var(--color-off-white)',
+              opacity: 0.5,
             }}
           >
-            <p
-              className="text-base leading-relaxed font-light"
-              style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-text)', opacity: 0.7 }}
-            >
-              Não existe compromisso mínimo de sessões. Não existe formato rígido. A frequência e o ritmo são definidos juntos, respeitando o que faz sentido para o seu momento. Se após a primeira sessão você sentir que não é o caminho, tudo bem. Sem pressão, sem cobrança.
-            </p>
-          </div>
+            Não existe compromisso mínimo de sessões. Não existe formato rígido. A frequência e o ritmo são definidos juntos, respeitando o que faz sentido para o seu momento.
+          </p>
+        </FadeIn>
+
+        {/* CTA */}
+        <FadeIn delay={0.4}>
+          <motion.a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileTap={{ scale: 0.98 }}
+            className="btn-shimmer"
+            style={{ display: 'inline-flex' }}
+          >
+            Quero reencontrar meu fôlego
+          </motion.a>
         </FadeIn>
 
       </div>

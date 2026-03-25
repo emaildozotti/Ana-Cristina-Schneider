@@ -26,7 +26,7 @@ export default function About() {
                 className="eyebrow-ultra mb-8"
                 style={{ color: 'var(--color-text)', opacity: 0.5 }}
               >
-                Sobre
+                Muito prazer, Ana Cristina
               </p>
               <h2
                 className="leading-[1.1] font-display mb-12"
@@ -36,7 +36,10 @@ export default function About() {
                   letterSpacing: '-0.02em',
                 }}
               >
-                Ana Cristina Schneider
+                Da observadora silenciosa{' '}
+                <em className="italic font-light" style={{ color: 'var(--color-accent)' }}>
+                  à analista que não recua.
+                </em>
               </h2>
             </FadeIn>
 
