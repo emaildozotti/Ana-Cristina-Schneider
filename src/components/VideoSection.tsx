@@ -159,12 +159,6 @@ export default function VideoSection() {
                       Ana Cristina Schneider
                     </p>
 
-                    <p
-                      className="text-[10px] uppercase tracking-[0.25em] font-light"
-                      style={{ color: 'var(--color-accent)', opacity: 0.7 }}
-                    >
-                      Vídeo em breve
-                    </p>
                   </motion.button>
                 </div>
               )}
