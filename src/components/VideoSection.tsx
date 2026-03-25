@@ -75,8 +75,7 @@ export default function VideoSection() {
             <div
               className="relative overflow-hidden"
               style={{
-                maxWidth: '300px',
-                width: '100%',
+                width: '300px',
                 aspectRatio: '9/16',
                 borderRadius: '2px',
                 boxShadow: '0 30px 80px -20px rgba(0,0,0,0.6)',
