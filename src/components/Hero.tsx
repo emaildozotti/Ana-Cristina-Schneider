@@ -17,6 +17,10 @@ export default function Hero() {
     <section
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-primary section-padding"
+      style={{
+        backgroundImage: 'radial-gradient(rgba(184, 150, 110, 0.07) 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+      }}
     >
       {/* ── Header desktop sticky ── */}
       <header className="hidden md:flex fixed top-0 left-0 right-0 z-50 items-center justify-between container-ultra py-6">
