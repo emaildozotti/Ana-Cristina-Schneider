@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { motion } from 'motion/react'
 import { FadeIn } from '../App'
 
-const VIDEO_ID = '' // Aguardando vídeo do cliente — placeholder ativo
+const VIDEO_ID = 'CKj8c_xb5FQ'
 const WA_LINK = 'https://wa.me/5541999407836?text=Ol%C3%A1%20Ana%2C%20vim%20pela%20p%C3%A1gina%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o.'
 
 export default function VideoSection() {
